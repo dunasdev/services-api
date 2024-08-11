@@ -1,6 +1,9 @@
 # Services.Api
 API de um sistema para prestadores de serviços técnicos.
 
+# Diagrama
+<img src="/docs/diagrama.jpg">
+
 # Instalar
 - .Net 8+: [Aqui](https://dotnet.microsoft.com/pt-br/download)
 - Execute esse comando para baixar a ferramenta do Entity Framework para gerenciar migrations e updates no banco:
