@@ -1,8 +1,8 @@
 # Services.Api
-API de um sistema para prestadores de serviços técnicos.
+API de um sistema para prestadores de serviÃ§os tÃ©cnicos.
 
 # Diagrama
-<img src="/docs/diagrama.jpg">
+<img src="/Docs/diagrama.jpg">
 
 # Instalar
 - .Net 8+: [Aqui](https://dotnet.microsoft.com/pt-br/download)
@@ -11,7 +11,7 @@ API de um sistema para prestadores de serviços técnicos.
 dotnet tool install --global dotnet-ef
 ```
 
-_Após instalar os itens listados acima, vamos baixar a imagem docker do SQL Server e subir o container com a imagem baixada._
+_ApÃ³s instalar os itens listados acima, vamos baixar a imagem docker do SQL Server e subir o container com a imagem baixada._
 
 ## Docker
 - Baixar a imagem do MSSQL:
@@ -24,12 +24,12 @@ docker pull mcr.microsoft.com/mssql/server
 docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SenhaForte123#" -p 1433:1433 -d mcr.microsoft.com/mssql/server
 ```
 
-- Para verificar se o container subiu corretamente execute o comando abaixo no terminal e veja se o status está UP:
+- Para verificar se o container subiu corretamente execute o comando abaixo no terminal e veja se o status estÃ¡ UP:
 ```shell
 docker ps
 ```
 
-_Adiante, para rodar o projeto basta estar na raiz e rodar os comandos abaixo em sequência. Eles vão, respectivamente, criar a migration e atualizar o banco e ,por fim, rodar o projeto._
+_Adiante, para rodar o projeto basta estar na raiz e rodar os comandos abaixo em sequÃªncia. Eles vÃ£o, respectivamente, criar a migration e atualizar o banco e ,por fim, rodar o projeto._
 
 ## .Net
 
