@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Services.Api.Contexts;
 using Services.Api.DTOs;
 using Services.Api.Models;
+using System.Security.Claims;
 
 namespace Services.Api.Controllers
 {
@@ -53,6 +55,67 @@ namespace Services.Api.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetClient), new { id = Client.Id }, Client);
+        }
+
+        [HttpPut("{Id}")]
+        public async Task<IActionResult> UpdateClient(string id, [FromBody] UpdateClientDto dto) // not tested yet
+        {
+            if (dto == null)
+            {
+                return BadRequest("Nenhum dado para atualizar");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == Guid.Parse(id));
+
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            if (!string.IsNullOrEmpty(dto.Name))
+            {
+                client.Name = dto.Name;
+            }
+
+            if (!string.IsNullOrEmpty(dto.Email))
+            {
+                client.Email = dto.Email;
+            }
+
+            if (!string.IsNullOrEmpty(dto.Phone1))
+            {
+                client.Phone1 = dto.Phone1;
+            }
+
+            if (!string.IsNullOrEmpty(dto.Phone2))
+            {
+                client.Phone2 = dto.Phone2;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeleteClient(string id) // not tested yet
+        {
+            var client = await _context.Clients.FirstOrDefaultAsync(s => s.Id == Guid.Parse(id));
+
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            _context.Clients.Remove(client);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }
