@@ -58,7 +58,7 @@ namespace Services.Api.Controllers
         }
 
         [HttpPut("{Id}")]
-        public async Task<IActionResult> UpdateClient(string id, [FromBody] UpdateClientDto dto) // not tested yet
+        public async Task<IActionResult> UpdateClient(string id, [FromBody] UpdateClientDto dto)
         {
             if (dto == null)
             {
@@ -103,7 +103,7 @@ namespace Services.Api.Controllers
         }
 
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteClient(string id) // not tested yet
+        public async Task<IActionResult> DeleteClient(string id)
         {
             var client = await _context.Clients.FirstOrDefaultAsync(s => s.Id == Guid.Parse(id));
 
